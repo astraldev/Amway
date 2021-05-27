@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang>
+
+<head>
+  <meta charset="utf-8" />
+  <meta content="IE=edge" http-equiv="X-UA-Compatible" />
+  <meta content="width=device-width,initial-scale=1.0" name="viewport" />
+  <link rel="stylesheet" />
+  <link href="<%= BASE_URL %>favicon.ico" rel="icon" />
+  <title>
+    <%= htmlWebpackPlugin.options.title %>
+  </title>
+  <style>
+    body {
+      background-color: rgba(43, 97, 245, 0.959);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      outline: none;
+    }
+
+    div.navbar {
+      position: sticky;
+      z-index: 10000;
+      top: 0;
+      background-color: rgb(19, 110, 230);
+      box-shadow: 0 1px 2px rgb(73, 73, 73);
+      margin-bottom: 5px;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+    }
+
+    .navbar .brand {
+      font-size: 1.7rem;
+      font-weight: 700;
+      margin-bottom: 5px;
+      color: #fff;
+      flex-grow: 1;
+      flex-shrink: 1;
+    }
+
+    .navbar .search-bar {
+      position: relative;
+      padding: 2px;
+      flex-grow: 2;
+      flex-shrink: 1;
+    }
+
+    .search-bar input {
+      position: relative;
+      width: 100%;
+    }
+
+    .navbar .navs {
+      flex-grow: 1;
+      flex-shrink: 2;
+      display: flex;
+      justify-content: right;
+    }
+
+    ul.nav-list {
+      margin-top: 5px;
+      margin-bottom: 0;
+      margin-left: auto;
+      list-style: none;
+      list-style-type: none;
+      display: flex;
+    }
+
+    ul.nav-list li {
+      padding: 5px;
+      position: relative;
+      margin-right: 5px;
+      flex-wrap: nowrap;
+    }
+
+    ul.nav-list li a {
+      text-decoration: none;
+      color: #fff;
+    }
+
+    .footer {
+      background-color: aliceblue;
+      position: relative;
+      display: flex;
+      color: #fff;
+      bottom: 0;
+      height: 10%;
+      width: 100%;
+      background-color: rgb(19, 110, 230);
+      box-shadow: 0 -2px 1.5px 0 rgb(73, 73, 73);
+    }
+
+    .footer .nav-list {
+      justify-content: center;
+      margin: auto;
+    }
+
+    #app {
+      height: 100%;
+    }
+  </style>
+</head>
+
+<body>
+  <noscript>
+    <strong>
+      We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please
+      enable it to continue.
+    </strong>
+  </noscript>
+
+  <div id="app"></div>
+
+  <footer class="footer">
+    <ul class="nav-list">
+      <li>Contact us</li>
+      <li>About us</li>
+      <li>FAQ</li>
+    </ul>
+  </footer>
+  <!-- built files will be auto injected -->
+</body>
+
+</html>
