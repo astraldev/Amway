@@ -34,11 +34,11 @@ export default {
     return {
       Page : "Shop",
       cart : [],
-      userType: "diamond",
-      userName: "Joe",
-      userEmail:"f@gmail.com",
-      userPass: "popper",
-      signedIn: true,
+      userType: "",
+      userName: "",
+      userEmail:"",
+      userPass: "",
+      signedIn: false,
       notify: false
     }
   },
