@@ -213,20 +213,6 @@ var Market = {
   justify-content: space-between;
   padding-bottom: 10px;
 }
-#discount {
-  position: relative;
-  overflow: hidden;
-}
-#discount::before {
-  content: "";
-  display: block;
-  width: 100%;
-  border-top: 2px solid #4b4b4b;
-  height: 2px;
-  position: absolute;
-  bottom: 5px;
-  left: 0;
-}
 .item2 {
   position: relative;
   display: flex;

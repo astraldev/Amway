@@ -100,8 +100,8 @@ export default {
   height: 70%;
   margin-bottom: 5vh;
   margin-top: 5vh;
-  box-shadow: 5px 5px 10px 0 rgba(29, 29, 29, 0.8),
-    -5px -5px 20px 0 rgba(29, 29, 29, 0.8);
+  box-shadow: 2px 2px 5px 0 rgba(29, 29, 29, 0.8),
+    -2px -2px 5px 0 rgba(29, 29, 29, 0.8);
 }
 .container{
   display: flex;
@@ -141,8 +141,7 @@ export default {
 input:hover,
 .joined:hover {
   transform: scale(1.001);
-  box-shadow: 1px 1px 1px 0 rgba(18, 79, 194, 0.8),
-    -1px -1px 1px 0 rgba(18, 79, 194, 0.8);
+  box-shadow: 1px 1px 5px 0 rgba(18, 79, 194, 0.8), -1px -1px -5px 0 rgba(18, 79, 194, 0.8);
   transition: all 0.5s linear;
 }
 @media screen and (max-width: 720px) {

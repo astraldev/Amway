@@ -49,7 +49,13 @@
 .b-right {
   border-right: 2px solid #ddd;
 }
-
+.b-none{
+  border: none;
+}
+img{
+  position: relative;
+  display: block;
+}
 
 .w-25p {
   width: 25%;
@@ -132,6 +138,25 @@
   margin-top: auto;
   margin-bottom: auto;
 }
+.inline{
+  display: inline-block;
+}
+.badge{
+  background: #166ff6;
+  display: inline-flex;
+  border: 1px solid transparent;
+  border-radius: 50%;
+  color: #fff;
+  font-size: 13px;
+  height: calc(17%);
+  width: calc(25%);
+  padding: 2px;
+  position: absolute;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 2px 2px 5px 0 #aaa;
+  right: 0;
+}
 
 input {
   height: 35px;
@@ -153,6 +178,23 @@ input[type=number] {
 a.no-link {
   text-decoration: none;
   color: #fff;
+  font-family: Arial;
+}
+
+
+#discount {
+  position: relative;
+  overflow: hidden;
+}
+#discount::before {
+  content: "";
+  display: block;
+  width: 100%;
+  border-top: 2px solid #4b4b4b;
+  height: 2px;
+  position: absolute;
+  bottom: 5px;
+  left: 0;
 }
 
 .undl {
@@ -166,15 +208,15 @@ a.no-link {
 .btn {
   background-color: rgb(68, 119, 214);
   border: 1px solid transparent;
-  border-radius: 5px;
-  padding: 5px;
+  border-radius: 3px;
   color: #fff;
+  padding: 1px;
   position: relative;
   box-shadow: 1px 1px 1px 0 rgb(26, 26, 26);
 }
 
 .btn:hover {
-  box-shadow: 0 0 0 0.2rem rgba(38, 143, 255, 0.5);
+  box-shadow: 0 0 0 0.13rem rgba(38, 143, 255, 0.5);
 }
 
 button.slide-effect {
@@ -251,7 +293,7 @@ button.slide-effect:active::before {
   }
 }
 
-@media screen and (max-width: 720px) {
+@media screen and (max-width: 520px) {
   .search-bar {
     order: 2;
     width: 99%;

@@ -11,10 +11,6 @@
     <%= htmlWebpackPlugin.options.title %>
   </title>
   <style>
-    body {
-      background-color: rgba(43, 97, 245, 0.959);
-    }
-
     * {
       margin: 0;
       padding: 0;
@@ -27,8 +23,9 @@
       position: sticky;
       z-index: 10000;
       top: 0;
-      background-color: rgb(19, 110, 230);
+      color: #fff;
       box-shadow: 0 1px 2px rgb(73, 73, 73);
+      background-color: rgb(19, 110, 230);
       margin-bottom: 5px;
       display: flex;
       flex-direction: row;
@@ -64,9 +61,11 @@
     }
 
     ul.nav-list {
-      margin-top: 5px;
-      margin-bottom: 0;
+      margin-top: 0;
+      margin-bottom: 2px;
+      height: calc(100%);
       margin-left: auto;
+      padding-top: 4px;
       list-style: none;
       list-style-type: none;
       display: flex;
@@ -77,13 +76,17 @@
       position: relative;
       margin-right: 5px;
       flex-wrap: nowrap;
+      border: 1px solid transparent;
     }
 
-    ul.nav-list li a {
+     ul.nav-list li a {
       text-decoration: none;
       color: #fff;
     }
-
+    .navs ul.nav-list li:hover{
+      background: rgb(0, 0, 2, 0.1);
+      border-radius: 4px;
+    }
     .footer {
       background-color: aliceblue;
       position: relative;
