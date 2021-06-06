@@ -1,116 +1,41 @@
 <!doctype html>
 <html lang>
-
 <head>
   <meta charset="utf-8" />
-  <meta content="IE=edge" http-equiv="X-UA-Compatible" />
-  <meta content="width=device-width,initial-scale=1.0" name="viewport" />
+  <meta content="IE=edge"
+        http-equiv="X-UA-Compatible" />
+  <meta content="width=device-width,initial-scale=1.0"
+        name="viewport" />
   <link rel="stylesheet" />
-  <link href="<%= BASE_URL %>favicon.ico" rel="icon" />
+  <link href="<%= BASE_URL %>favicon.ico"
+        rel="icon" />
+  <link href="tailwind.css" rel="stylesheet" />
   <title>
     <%= htmlWebpackPlugin.options.title %>
   </title>
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      outline: none;
-    }
-
-    div.navbar {
-      position: sticky;
-      z-index: 10000;
-      top: 0;
-      color: #fff;
-      box-shadow: 0 1px 2px rgb(73, 73, 73);
-      background-color: rgb(19, 110, 230);
-      margin-bottom: 5px;
-      display: flex;
-      flex-direction: row;
-      flex-wrap: wrap;
-    }
-
-    .navbar .brand {
-      font-size: 1.7rem;
-      font-weight: 700;
-      margin-bottom: 5px;
-      color: #fff;
-      flex-grow: 1;
-      flex-shrink: 1;
-    }
-
-    .navbar .search-bar {
-      position: relative;
-      padding: 2px;
-      flex-grow: 2;
-      flex-shrink: 1;
-    }
-
-    .search-bar input {
-      position: relative;
-      width: 100%;
-    }
-
-    .navbar .navs {
-      flex-grow: 1;
-      flex-shrink: 2;
-      display: flex;
-      justify-content: right;
-    }
-
-    ul.nav-list {
-      margin-top: 0;
-      margin-bottom: 2px;
-      height: calc(100%);
-      margin-left: auto;
-      padding-top: 4px;
-      list-style: none;
-      list-style-type: none;
-      display: flex;
-    }
-
-    ul.nav-list li {
-      padding: 5px;
-      position: relative;
-      margin-right: 5px;
-      flex-wrap: nowrap;
-      border: 1px solid transparent;
-    }
-
-     ul.nav-list li a {
-      text-decoration: none;
-      color: #fff;
-    }
-    .navs ul.nav-list li:hover{
-      background: rgb(0, 0, 2, 0.1);
-      border-radius: 4px;
-    }
-    .footer {
-      background-color: aliceblue;
-      position: relative;
-      display: flex;
-      color: #fff;
-      bottom: 0;
-      height: 10%;
-      width: 100%;
-      background-color: rgb(19, 110, 230);
-      box-shadow: 0 -2px 1.5px 0 rgb(73, 73, 73);
-    }
-
-    .footer .nav-list {
-      justify-content: center;
-      margin: auto;
-    }
-
-    #app {
-      height: 100%;
+    .price-tag{
+      font-family: Arial, Helvetica, sans-serif;
     }
   </style>
 </head>
 
 <body>
+  <svg height="24"
+       viewBox="0 0 24 24"
+       width="24"
+       xmlns="http://www.w3.org/­2000/svg"
+       class="hidden">
+    <symbol id="cart">
+      <path d="M10 19.5c0 .829-.672 1.5-1.5
+    1.5s-1.5-.671-1.5-1.­5c0-.828.672-1.5 1.5-1.5s1.5.672 1.5
+    1.5zm3.5-1.5c-.828 0-1.5.671-1.5 1.5s.672 1.5 1.5 1.5 1.5-.671
+    1.5-1.5c0-.828-.672-­1.5-1.5-1.5zm1.336-5­l1.977-7h-16.813l2.9­38
+    7h11.898zm4.969-10l-­3.432 12h-12.597l.839
+    2h13.239l3.474-12h1.­929l.743-2h-4.195z"/­>
+    </symbol>
+    
+  </svg>
   <noscript>
     <strong>
       We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please
@@ -120,14 +45,16 @@
 
   <div id="app"></div>
 
-  <footer class="footer">
-    <ul class="nav-list">
-      <li>Contact us</li>
-      <li>About us</li>
-      <li>FAQ</li>
+  <footer class="bg-blue-600 text-white p-0.5 justify-center flex items-center relative bottom-0 mt-2 h-9">
+    <ul class="">
+      <li class="inline-block space-x-2 px-1 font-semibold font-arial text-base"><a>Contact us</a></li>
+      <li class="inline-block space-x-2 px-1 font-semibold font-arial text-base"><a>About us</a></li>
+      <li class="inline-block space-x-2 px-1 font-semibold font-arial text-base"><a>FAQ</a></li>
     </ul>
   </footer>
+  <script>
+    console.log(document.querySelectorAll("div.search-bar"))
+  </script>
   <!-- built files will be auto injected -->
 </body>
-
 </html>

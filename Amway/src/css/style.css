@@ -1,0 +1,46 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.btn{
+  @apply px-1 py-2 rounded-md font-semibold shadow-md;
+}
+.btn-blue{
+  @apply bg-blue-500 border border-blue-300 hover:bg-blue-600 ;
+}
+.categories{
+  @apply grid grid-cols-categories auto-rows-categories gap-x-5 gap-y-5 justify-center;
+}
+
+button.slide-effect {
+  overflow: hidden;
+  position: relative;
+}
+
+button.slide-effect:active::before {
+  content: '';
+  left: 0;
+  width: 0;
+  height: 0;
+  position: absolute;
+  z-index: 10;
+  top: 0;
+  background: rgba(17, 17, 17, 0.137);
+  animation: btn-wave 0.9s 1 ease;
+}
+
+@keyframes btn-wave {
+  0% {
+    width: 0;
+    height: 100%;
+  }
+  99% {
+    width: 1000px;
+    height: 100%;
+  }
+  100% {
+    width: 0;
+    height: 0;
+  }
+}

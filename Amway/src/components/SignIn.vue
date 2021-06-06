@@ -1,53 +1,224 @@
 <template>
-  <div class="sign-in hidden">
-    <div class="container">
-      <h2>Sign in</h2>
-      <form class="form">
-        <div class="form-group">
-          <label for="name"> Name</label>
-          <input
-            type="text"
-            id="name"
-            v-model="userName"
-            placeholder="Joe"
-            aria-required="true"
-            required
-          />
+  <div class="w-full">
+    <div class="mx-auto my-5 px-2 w-p-95 md:w-p-60 rounded md:h-80 max-h-screen shadow border-2 border-blue-700">
+      <h2 class="font-semibold text-4xl text-center py-2 text-gray-700">Sign in</h2>
+      <form class="flex justify-center flex-col mx-auto">
+        <div class="flex p-2 flex-col sm:justify-center md:flex-row">
+          <label
+            for="name"
+            class="font-arial text-base font-x-medium text-gray-700 md:w-p-20"
+          >
+            Name</label
+          >
+          <div
+            class="
+              relative
+              sm:w-p-95
+              h-9
+              border-2 border-blue-600
+              rounded
+              shadow-sm
+            "
+          >
+            <input
+              type="text"
+              id="name"
+              v-model="userName"
+              placeholder="Joe"
+              aria-required="true"
+              required
+              class="w-full p-1 bg-gray-50 h-full"
+            />
+            <div
+              class="
+                absolute
+                right-0
+                inset-y-0
+                inline-flex
+                items-center
+                px-2
+                pointer-events-none
+              "
+            >
+              <svg
+                class="w-6 h-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
+                ></path>
+              </svg>
+            </div>
+          </div>
         </div>
-        <div class="form-group">
-          <label for="email">Email</label>
-          <input
-            type="text"
-            id="email"
-            v-model="userEmail"
-            placeholder="joe64@gmail.com"
-            aria-required="true"
-            required
-          />
+        <div class="flex p-2 flex-col sm:justify-center md:flex-row">
+          <label
+            for="email"
+            class="font-arial text-base font-x-medium text-gray-700 md:w-p-20"
+            >Email</label
+          >
+          <div
+            class="
+              sm:w-p-95
+              border-2 border-blue-600
+              shadow-sm
+              rounded
+              h-9
+              overflow-hidden
+              relative
+            "
+          >
+            <input
+              type="text"
+              id="email"
+              v-model="userEmail"
+              placeholder="joe64@gmail.com"
+              aria-required="true"
+              required
+              class="w-full p-1 h-full"
+            />
+            <div
+              class="
+                absolute
+                inset-y-0
+                inline-flex
+                items-center
+                right-0
+                px-2
+                pointer-events-none
+              "
+            >
+              <svg
+                class="w-4 h-4"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="3"
+                  d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207"
+                ></path>
+              </svg>
+            </div>
+          </div>
         </div>
-        <div class="form-group">
-          <label for="password">Password</label>
-          <input
-            type="password"
-            id="password"
-            v-model="userPass"
-            placeholder="Password"
-            aria-required="true"
-            required
-          />
+        <div class="flex flex-col p-2 sm:justify-center md:flex-row">
+          <label
+            for="password"
+            class="font-arial text-base font-x-medium text-gray-700 md:w-p-20"
+            >Password</label
+          >
+          <div
+            class="
+              sm:w-p-95
+              border-2 border-blue-600
+              rounded
+              h-9
+              relative
+              shadow-sm
+            "
+          >
+            <input
+              type="password"
+              id="password"
+              v-model="userPass"
+              placeholder="Password"
+              aria-required="true"
+              class="p-1 h-full w-full bg-gray-50"
+              required
+            />
+            <div
+              class="
+                absolute
+                inset-y-0
+                right-0
+                inline-flex
+                items-center
+                px-2
+                pointer-events-none
+              "
+            >
+              <svg
+                class="w-4 h-4"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="3"
+                  d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
+                ></path>
+              </svg>
+            </div>
+          </div>
         </div>
-        <div class="form-group">
-          <label for="usrType">User Type </label>
-          <div class="joined">
-            <select id="usrType" class="select-btn" v-model="userType">
+        <div class="flex flex-col p-2 sm:justify-center md:flex-row">
+          <label
+            for="usrType"
+            class="font-arial text-base font-x-medium text-gray-700 md:w-p-20"
+            >User Type
+          </label>
+          <div
+            class="sm:w-p-95 relative border-2 border-blue-600 rounded bg-gray-50"
+          >
+            <select
+              id="usrType"
+              class="appearance-none w-full bg-gray-50 h-8"
+              v-model="userType"
+            >
               <option value="normal">Normal</option>
               <option value="associate">Associate</option>
               <option value="diamond">Diamond</option>
             </select>
+            <div
+              class="
+                absolute
+                inset-y-0
+                inline-flex
+                items-center
+                right-0
+                px-2
+                pointer-events-none
+              "
+            >
+              <svg
+                class="w-4 h-4"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="3"
+                  d="M19 9l-7 7-7-7"
+                ></path>
+              </svg>
+            </div>
           </div>
         </div>
-        <div class="form-group last">
-          <button type="submit" class="btn" @click="signedIn()">Sign in</button>
+        <div class="p-2">
+          <div class="w-0 md:w-p-18 inline-block"></div>
+          <button
+            type="submit"
+            class="btn btn-blue text-white shadow-sm w-20"
+            @click="signedIn()"
+          >
+            Sign in
+          </button>
         </div>
       </form>
     </div>
@@ -81,7 +252,7 @@ export default {
       this.$parent.userName = this.userName;
       this.$parent.userEmail = this.userEmail;
       this.$parent.userPass = this.userPass;
-      this.$parent.userType = this.userType
+      this.$parent.userType = this.userType;
       this.$parent.Page = "Shop";
     },
   },
@@ -89,86 +260,4 @@ export default {
 </script>
 
 <style scoped>
-.sign-in {
-  background-color: #fff;
-  position: relative;
-  width: 60%;
-  margin-left: 20%;
-  border: 1px solid transparent;
-  border-radius: 7px;
-  padding: 10px;
-  height: 70%;
-  margin-bottom: 5vh;
-  margin-top: 5vh;
-  box-shadow: 2px 2px 5px 0 rgba(29, 29, 29, 0.8),
-    -2px -2px 5px 0 rgba(29, 29, 29, 0.8);
-}
-.container{
-  display: flex;
-  margin-right: auto;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-}
-.sign-in h2 {
-  font-size: 50px;
-  font-family: Arial, Helvetica, sans-serif;
-}
-.btn {
-  width: 60%;
-  height: 40px;
-}
-.select-btn {
-  height: 35px;
-  appearance: none;
-  -webkit-appearance: none;
-  background: none;
-  border-radius: 5px;
-  border: none;
-  box-shadow: none;
-  width: 95%;
-}
-.form{
-  height: 90%;
-}
-.joined {
-  border: 1px solid rgb(31, 98, 223);
-  height: 35px;
-  overflow: hidden;
-  border-radius: 5px;
-  padding-left: 5px;
-}
-input:hover,
-.joined:hover {
-  transform: scale(1.001);
-  box-shadow: 1px 1px 5px 0 rgba(18, 79, 194, 0.8), -1px -1px -5px 0 rgba(18, 79, 194, 0.8);
-  transition: all 0.5s linear;
-}
-@media screen and (max-width: 720px) {
-  .sign-in {
-    width: 90%;
-    margin-left: 5%;
-  }
-  .form {
-    position: relative;
-    width: 90%;
-    display: block;
-    height: 70%;
-    margin-left: auto;
-    margin-right: auto;
-  }
-  .form h2 {
-    font-size: 20px;
-  }
-  .form-group {
-    display: flex;
-    flex-direction: column;
-    margin: auto;
-    margin-bottom: 10px;
-  }
-  .form-group label {
-    font-weight: 600;
-    font-size: 17px;
-  }
-}
 </style>

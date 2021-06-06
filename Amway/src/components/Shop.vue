@@ -3,33 +3,63 @@
     <div class="categories">
       <div
         v-for="(product, index) in products"
-        class="card"
+        class="border border-blue-500 shadow-md rounded-md mx-auto h-full"
         :key="product.id + '_' + index"
       >
-        <div class="full">
-          <div class="card-head">
-            <div v-if="(product.discount != 0) &&  signedIn" class="badge">-{{product.discount}}%</div>
-            <div class="img">
-              <img src="<%= BASE_URL %>" class="b-none" border="0"/>
+        <div class="border-b-2 border-gray-300 h-43">
+          <div class="sm:flex-shrink-0">
+            <img src="" class="" border="0" />
+          </div>
+        </div>
+        <div class="h-57 px-1">
+          <div class="">
+            <div
+              class="text-sm h-20 overflow-ellipsis font-x-medium overflow-hidden antialiased px-0.5"
+            >
+              <span class="font-bold text-red-600 capitalize leading-5">{{
+                product.name
+              }}</span>
+              {{ product.description }}
+            </div>
+            <div class="
+                  text-rating
+                  font-semibold
+                  p-0.5
+                  w-40
+                  m-rl-2
+                  price-tag
+                  ">
+              <span
+                class="
+                  bg-rating
+                  text-white
+                  px-0.5
+                  rounded-sm
+                "
+              >
+                <span class=" text-base">★</span>
+                {{ getRating(product) }}</span
+              >
+              <span>
+                {{ product.defaultPrice }}
+              </span>
             </div>
           </div>
-          <div class="card-body">
-              <div class="description">
-                <span class="prod-name capitalize text-bold">{{ product.name }}</span>
-                {{ product.description }}
-              </div>
-              <div class="price-rating container"> 
-              <div class="rating"></div>
-              <div class="inline price-tag" :id="ifDiscount()">{{ product.defaultPrice }}</div> &nbsp;
-              <div v-if="(product.discount != 0) && signedIn" class="price-tag inline discounted"> {{product.price - (product.defaultPrice * product.discount / 100)}} </div>
-              </div>
-              <button
-                class="btn shop-btn slide-effect"
-                v-on:click="addToCart(product)"
-              >
-                Add to cart
-              </button>
-            </div>
+          <button
+            class="
+              btn
+              btn-blue
+              slide-effect
+              relative
+              m-rl-2
+              w-40
+              rounded-md
+              text-white
+            "
+            v-on:click="addToCart(product)"
+          >
+            Add to cart
+          </button>
         </div>
       </div>
     </div>
@@ -37,7 +67,6 @@
 </template>
 
 <script>
-import '../css/shop.css'
 export default {
   template: "shop",
   data() {
@@ -69,11 +98,11 @@ export default {
       snackbarcontent: "",
       snackclasses: "snackbar",
       signedIn: this.$parent.signedIn,
-      ifDiscount(){
-        if(product.signedIn && product.discount != 0)
-         return "discount"
-        return ""
-      }
+      ifDiscount() {
+        if (this.signedIn && product.discount != 0) return "discount";
+        return "";
+      },
+      currentRating: 0,
     };
   },
   methods: {
@@ -87,11 +116,16 @@ export default {
       if (this.$parent.signedIn) this.$parent.cart.push(item);
       item.count = 1;
     },
+    getRating() {
+      var rate = Math.floor(Math.random() * 5);
+      this.currentRating = rate;
+      return rate;
+    },
   },
 };
 
 var product = 0;
-function Product(name, price, description, short_description, discount=0) {
+function Product(name, price, description, short_description, discount = 0) {
   product++;
   return {
     name: name,

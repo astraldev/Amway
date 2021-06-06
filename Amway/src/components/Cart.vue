@@ -1,5 +1,18 @@
 <template v-if="this.$parent.signedIn">
   <div class="cart" v-if="itemInCart()">
+    <modal>
+      <div slot="title">Purchase succesful</div>
+      <div slot="body">
+        <p>Thanks for shoping with amway</p>
+      </div>
+      <div slot="footer"><button class="">Close</button></div>
+    </modal>
+    <div class="heading full" style="">
+      <div class="inline w-25p">Name</div>
+      <div class="inline w-25p">Short description</div>
+      <div class="inline w-25p">Price</div>
+      <div class="inline w-25p">Quantity</div>
+    </div>
     <div v-for="product in products" :key="product.name" class="block item">
       <div class="item1">
         <div class="p-name text-bold">{{ product.name }}</div>
@@ -49,9 +62,10 @@
 </template>
 
 <script>
+import Modal from './modal.vue';
 import number from "./number.vue";
 export default {
-  components: { number },
+  components: { number, Modal },
   data() {
     return {
       cart: this.$parent.cart,
