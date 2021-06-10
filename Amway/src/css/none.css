@@ -523,6 +523,7 @@ button.slide-effect:active::before {
   100% {
     width: 0;
     height: 0;
+    word-wrap: none;
   }
 }
 

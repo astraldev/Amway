@@ -1,11 +1,11 @@
 <template v-if="this.$parent.signedIn">
   <div class="cart" v-if="itemInCart()">
-    <modal>
+    <modal :open="showModal">
       <div slot="title">Purchase succesful</div>
       <div slot="body">
         <p>Thanks for shoping with amway</p>
       </div>
-      <div slot="footer"><button class="">Close</button></div>
+      <div slot="footer" class="flex flex-row-reverse"><button class="btn btn-blue" @click="showModal = false">Close</button></div>
     </modal>
     <div class="heading full" style="">
       <div class="inline w-25p">Name</div>
@@ -69,6 +69,7 @@ export default {
   data() {
     return {
       cart: this.$parent.cart,
+      doneShopping: false,
       products: this.GetProducts(this.$parent.cart),
       qty_count(product) {
         return Market.CountItems(product.name, this.products);
@@ -138,6 +139,9 @@ export default {
     },
     remove(array, index) {
       return array.slice(0, index).concat(array.slice(index + 1));
+    },
+    checkOut(){
+      this.doneShopping = true
     },
   },
 };
