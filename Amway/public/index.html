@@ -17,10 +17,14 @@
     .price-tag{
       font-family: Arial, Helvetica, sans-serif;
     }
+    input.placeholder-semibold::placeholder{
+      font-weight: 600;
+    }
   </style>
 </head>
 
 <body>
+  
   <noscript>
     <strong>
       We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please
@@ -30,16 +34,16 @@
 
   <div id="app"></div>
 
-  <footer class="bg-blue-600 text-white p-0.5 justify-center flex items-center relative bottom-0 mt-2 h-9">
-    <ul class="">
-      <li class="inline-block space-x-2 px-1 font-semibold font-arial text-base"><a>Contact us</a></li>
-      <li class="inline-block space-x-2 px-1 font-semibold font-arial text-base"><a>About us</a></li>
-      <li class="inline-block space-x-2 px-1 font-semibold font-arial text-base"><a>FAQ</a></li>
+  <footer class="bg-blue-600 text-white p-1.5 justify-center flex-col flex items-center relative bottom-0 mt-2">
+    <ul class="block">
+      <li class="inline-block space-x-2 px-1 font-semibold font-arial text-base"><a href="#">Contact us</a></li>
+      <li class="inline-block space-x-2 px-1 font-semibold font-arial text-base"><a href="#">About us</a></li>
+      <li class="inline-block space-x-2 px-1 font-semibold font-arial text-base"><a href="#">FAQ</a></li>
     </ul>
+    <div class="text-gray-300 text-sm font-bold">
+      Astraldev.co &copy; 2021
+    <div>
   </footer>
-  <script>
-    console.log(document.querySelectorAll("div.search-bar"))
-  </script>
   <!-- built files will be auto injected -->
 </body>
 </html>
