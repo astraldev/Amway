@@ -1,11 +1,11 @@
 <template v-if="this.$parent.signedIn">
   <div class="cart" v-if="itemInCart()">
-    <modal :open="showModal">
-      <div slot="title">Purchase succesful</div>
-      <div slot="body">
-        <p>Thanks for shoping with amway</p>
-      </div>
-      <div slot="footer" class="flex flex-row-reverse"><button class="btn btn-blue" @click="showModal = false">Close</button></div>
+    <modal :value="doneShopping" @close="modalClosed()">
+      <div slot="title" class="text-gray-700 flex flex-row items-center space-y-2">
+        <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path></svg>
+        Purchase Successful</div>
+      <div slot="content" class="text-gray-600">Thanks for shopping with Amway :)</div>
+      <div slot="footer" class="w-full flex flex-row-reverse"><button class="mr-2 w-p-40 btn btn-blue" @click="modalClosed()">Close</button></div>
     </modal>
     <div class="heading full" style="">
       <div class="inline w-25p">Name</div>
@@ -52,17 +52,35 @@
     </div>
     <div class="check-out">
       <button
-        class="btn btn-check-out h-full mrl-auto w-60p"
+        class="btn btn-blue h-full mx-auto w-p-60 slide-effect"
         @click="checkOut()"
       >
         Check Out
       </button>
     </div>
   </div>
+  <div class="w-full grid place-items-center" v-else>
+    <div class=" justify-center flex-col w-p-90 h-p-40">
+      <svg
+        version="1.1"
+        id="Layer_1"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 122.9 107.5"
+        fill="#555"
+        class="w-p-60 h-p-60 mr-6 antialiased"
+      >
+        <path
+          d="M3.9,7.9C1.8,7.9,0,6.1,0,3.9C0,1.8,1.8,0,3.9,0h10.2c0.1,0,0.3,0,0.4,0c3.6,0.1,6.8,0.8,9.5,2.5c3,1.9,5.2,4.8,6.4,9.1 c0,0.1,0,0.2,0.1,0.3l1,4H119c2.2,0,3.9,1.8,3.9,3.9c0,0.4-0.1,0.8-0.2,1.2l-10.2,41.1c-0.4,1.8-2,3-3.8,3v0H44.7 c1.4,5.2,2.8,8,4.7,9.3c2.3,1.5,6.3,1.6,13,1.5h0.1v0h45.2c2.2,0,3.9,1.8,3.9,3.9c0,2.2-1.8,3.9-3.9,3.9H62.5v0 c-8.3,0.1-13.4-0.1-17.5-2.8c-4.2-2.8-6.4-7.6-8.6-16.3l0,0L23,13.9c0-0.1,0-0.1-0.1-0.2c-0.6-2.2-1.6-3.7-3-4.5 c-1.4-0.9-3.3-1.3-5.5-1.3c-0.1,0-0.2,0-0.3,0H3.9L3.9,7.9z M96,88.3c5.3,0,9.6,4.3,9.6,9.6c0,5.3-4.3,9.6-9.6,9.6 c-5.3,0-9.6-4.3-9.6-9.6C86.4,92.6,90.7,88.3,96,88.3L96,88.3z M53.9,88.3c5.3,0,9.6,4.3,9.6,9.6c0,5.3-4.3,9.6-9.6,9.6 c-5.3,0-9.6-4.3-9.6-9.6C44.3,92.6,48.6,88.3,53.9,88.3L53.9,88.3z M33.7,23.7l8.9,33.5h63.1l8.3-33.5H33.7L33.7,23.7z"
+        />
+      </svg>
+      <span class="antialiased text-2xl font-semibold text-gray-600">No item in Cart</span>
+      <a href="#" @click.prevent="goTo('Shop')" class="text-blue-400 hover:text-blue-500">Continue shopping</a>
+    </div>
+  </div>
 </template>
 
 <script>
-import Modal from './modal.vue';
+import Modal from "./modal.vue";
 import number from "./number.vue";
 export default {
   components: { number, Modal },
@@ -89,20 +107,26 @@ export default {
     },
   },
   methods: {
+    goTo(page){
+      this.$parent.changePage(page)
+    },
     updateCount(prod) {
       if (prod.count > 0) {
-        prod.price = (prod.defaultPrice * prod.count)
+        prod.price = prod.defaultPrice * prod.count;
       } else if (prod.count == 0) {
         if (this.products.includes(prod)) {
-          this.products = this.remove(this.products, this.products.indexOf(prod));
-          this.$parent.cart = this.products
-          this.cart = this.products
+          this.products = this.remove(
+            this.products,
+            this.products.indexOf(prod)
+          );
+          this.$parent.cart = this.products;
+          this.cart = this.products;
         }
       }
       this.Discount(prod);
-      var price = prod.price.toString()
-      price.toFixed(2)
-      console.log(price, prod.price)
+      var price = new Number(prod.price.toString());
+      price = price.toFixed(2)
+      prod.price = price
     },
     GetProducts(cart) {
       if (!cart) return;
@@ -140,9 +164,13 @@ export default {
     remove(array, index) {
       return array.slice(0, index).concat(array.slice(index + 1));
     },
-    checkOut(){
-      this.doneShopping = true
+    checkOut() {
+      this.doneShopping = true;
     },
+    modalClosed(){
+      this.doneShopping = false
+      this.$parent.clearCart()
+    }
   },
 };
 
@@ -161,7 +189,7 @@ var Market = {
         }
       } else if (item.name.toLowerCase() == "kone" && item.count < 2) {
         item.price = item.defaultPrice * item.count;
-        item.price = item.price - item.price * discountType
+        item.price = item.price - item.price * discountType;
       } else {
         item.price = (
           (item.defaultPrice - item.defaultPrice * discountType) *

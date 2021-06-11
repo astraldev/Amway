@@ -1,6 +1,6 @@
 <template>
-  <div class="w-full h-p-80">
-    <div class="mx-auto my-5 px-2 w-p-95 md:w-p-80 lg:w-p-70 rounded max-h-screen shadow border-2 border-blue-700">
+  <div class="w-full">
+    <div class="mx-auto px-2 w-p-95 md:w-p-80 my-auto lg:w-p-70 rounded max-h-screen shadow border-2 h-p-80 border-blue-700">
       <h2 class="font-semibold text-4xl text-center py-2 text-gray-700">Sign in</h2>
       <form class="flex justify-center flex-col mx-auto">
         <div class="flex p-2 flex-col sm:justify-center md:flex-row">

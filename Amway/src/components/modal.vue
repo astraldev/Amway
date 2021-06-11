@@ -1,11 +1,36 @@
 <template>
-  <div v-if="value" class="fixed top-0 w-full z-30 h-full blur-md flex items-center flex-shrink-0 justify-center" style="background: rgba(10, 10, 10, 0.3)">
-    <div class="mx-auto border-2 border-blue-500 p-2 bg-white shadow-md rounded-md z-50 absolute w-p-80 md:w-p-60 lg:w-p-40">
+  <div
+    v-if="value"
+    class="fixed top-0 w-full z-30 h-full blur-md grid place-items-center"
+    style="background: rgba(10, 10, 10, 0.3)"
+    tabindex="0"
+    @click="close()"
+  >
+    <div
+      class="
+        mx-auto
+        border-2 border-blue-500
+        p-2
+        bg-white
+        shadow-md
+        rounded-md
+        z-50
+        absolute
+        w-p-80
+        md:w-p-60
+        lg:w-p-40
+      "
+    >
       <div class="flex space-x-2 justify-between m-1 border-b border-gray-300">
         <div class="text-gray-600 font-bold text-lg">
-          <slot name="title" class="text-gray-200 font-bold text-lg">Modal</slot>
+          <slot name="title" class="text-gray-200 font-bold text-lg"
+            >Modal</slot
+          >
         </div>
-        <button class="border-0 bg-gray-50 hover:bg-gray-200 p-1.5 h-6 rounded-md " @click="close()">
+        <button
+          class="border-0 bg-gray-50 hover:bg-gray-200 p-1.5 h-6 rounded-md"
+          @click="close()"
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             id="SVGRoot"
@@ -48,25 +73,28 @@
         <slot name="content">Body of the modal</slot>
       </div>
       <div class="p-1">
-        <slot name="footer" class="border-t border-gray-300">Foot of the modal</slot>
+        <slot name="footer" class="border-t border-gray-300"
+          >Foot of the modal</slot
+        >
       </div>
     </div>
   </div>
 </template>
 <script>
 export default {
-  props:{
-    value:{default: false}
+  props: {
+    value: { default: false },
   },
-  methods:{
-    close(){
-      this.$emit('close')
+  methods: {
+    close() {
+      if(this.value)
+      setTimeout(()=>{this.$emit("close")}, 100);
     },
-  }
+  },
 };
 </script>
 <style scoped>
-.z-1000{
+.z-1000 {
   z-index: 1000;
 }
 </style>
