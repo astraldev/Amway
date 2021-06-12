@@ -1,5 +1,5 @@
 <template v-if="this.$parent.signedIn">
-  <div class="cart" v-if="itemInCart()">
+  <div class="" v-if="itemInCart()">
     <modal :value="doneShopping" @close="modalClosed()">
       <div slot="title" class="text-gray-700 flex flex-row items-center space-y-2">
         <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path></svg>
@@ -7,20 +7,20 @@
       <div slot="content" class="text-gray-600">Thanks for shopping with Amway :)</div>
       <div slot="footer" class="w-full flex flex-row-reverse"><button class="mr-2 w-p-40 btn btn-blue" @click="modalClosed()">Close</button></div>
     </modal>
-    <div class="heading full" style="">
-      <div class="inline w-25p">Name</div>
-      <div class="inline w-25p">Short description</div>
-      <div class="inline w-25p">Price</div>
-      <div class="inline w-25p">Quantity</div>
+    <div class="hidden md:block" style="">
+      <div class="">Name</div>
+      <div class="">Short description</div>
+      <div class="">Price</div>
+      <div class="">Quantity</div>
     </div>
-    <div v-for="product in products" :key="product.name" class="block item">
-      <div class="item1">
-        <div class="p-name text-bold">{{ product.name }}</div>
-        <div class="p-desc">{{ product.shortDes }}</div>
+    <div v-for="product in products" :key="product.name" class="">
+      <div class="">
+        <div class="">{{ product.name }}</div>
+        <div class="">{{ product.shortDes }}</div>
       </div>
-      <div class="item2">
-        <span class="t-sm text-bold">
-          <span class="text-center no-right-border p-total block">
+      <div class="">
+        <span class="">
+          <span class="">
             <span
               id="discount"
               :style="discountStyle()"
@@ -59,7 +59,7 @@
       </button>
     </div>
   </div>
-  <div class="w-full grid place-items-center" v-else>
+  <div class="w-full h-screen-70 grid place-items-center" v-else>
     <div class=" justify-center flex-col w-p-90 h-p-40">
       <svg
         version="1.1"

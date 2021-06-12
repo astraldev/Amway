@@ -1,7 +1,23 @@
 <template>
   <div class="w-full py-5">
-    <div class="mx-auto px-2 w-p-95 md:w-p-70 my-auto lg:w-p-70 rounded shadow border-2 h-98 border-blue-700">
-      <h2 class="font-semibold text-5xl text-center py-2 text-gray-700">Sign in</h2>
+    <div
+      class="
+        mx-auto
+        px-2
+        w-p-95
+        md:w-p-70
+        my-auto
+        lg:w-p-70
+        rounded
+        shadow
+        border-2
+        h-98
+        border-blue-700
+      "
+    >
+      <h2 class="font-semibold text-5xl text-center py-2 text-gray-700">
+        Sign in
+      </h2>
       <form class="flex justify-center flex-col mx-auto">
         <div class="flex p-2 flex-col sm:justify-center md:flex-row">
           <label
@@ -13,7 +29,8 @@
           <div
             class="
               relative
-              sm:w-p-95
+              w-full
+              md:w-p-95
               h-9
               border-2 border-blue-600
               rounded
@@ -65,7 +82,8 @@
           >
           <div
             class="
-              sm:w-p-95
+              w-full
+              md:w-p-95
               border-2 border-blue-600
               shadow-sm
               rounded
@@ -119,7 +137,8 @@
           >
           <div
             class="
-              sm:w-p-95
+              w-full
+              md:w-p-95
               border-2 border-blue-600
               rounded
               h-9
@@ -171,7 +190,14 @@
             >User Type
           </label>
           <div
-            class="sm:w-p-95 relative border-2 border-blue-600 rounded bg-gray-50"
+            class="
+              w-full
+              md:w-p-95
+              relative
+              border-2 border-blue-600
+              rounded
+              bg-gray-50
+            "
           >
             <select
               id="usrType"
@@ -214,11 +240,21 @@
           <div class="w-0 md:w-p-18 inline-block"></div>
           <button
             type="submit"
-            class="btn btn-blue text-white shadow-sm w-p-50 mx-auto"
+            class="btn btn-blue text-white shadow-sm w-full md:w-p-95 mx-auto"
             @click="signedIn()"
           >
             Sign in
           </button>
+        </div>
+        <div class="p-2 grid place-items-center">
+          <div>
+            <span class="antialiased text-base font-semibold text-gray-600"
+              >Not a member
+              <a href="#" class="text-blue-400 hover:text-blue-500"
+                >Register</a
+              ></span
+            >
+          </div>
         </div>
       </form>
     </div>

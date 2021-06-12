@@ -338,7 +338,7 @@
     </div>
 
     <keep-alive>
-      <component :is="Page" class="min-h-screen-85"></component>
+      <component :is="Page" class="my-2.5 p-1"></component>
     </keep-alive>
   </div>
 </template>

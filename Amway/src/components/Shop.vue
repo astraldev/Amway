@@ -11,7 +11,7 @@
             <img src="" class="" border="0" />
           </div>
         </div>
-        <div class="h-57 px-1">
+        <div class="h-57 px-1 relative">
           <div class="">
             <div
               class="
@@ -43,11 +43,9 @@
             class="
               btn btn-blue
               slide-effect
-              relative
-              mx-auto
-              w-40
+              w-p-95
+              m-rl-2.5
               rounded-md
-              text-white
             "
             v-on:click="addToCart(product);showModal()"
           >
@@ -84,7 +82,7 @@ export default {
         "A miniture size desktop printer...",
         "Worth it"
       ),
-      Product("Nike air", 2000.93, "Just Nike air shoe", "Nike air"),
+      Product("Nike air", 2000.93, "Just Nike air shoe that has no description", "Nike air"),
     ];
     return {
       products: pd,
