@@ -1,7 +1,7 @@
 <template>
-  <div class="w-full">
-    <div class="mx-auto px-2 w-p-95 md:w-p-80 my-auto lg:w-p-70 rounded max-h-screen shadow border-2 h-p-80 border-blue-700">
-      <h2 class="font-semibold text-4xl text-center py-2 text-gray-700">Sign in</h2>
+  <div class="w-full py-5">
+    <div class="mx-auto px-2 w-p-95 md:w-p-70 my-auto lg:w-p-70 rounded shadow border-2 h-98 border-blue-700">
+      <h2 class="font-semibold text-5xl text-center py-2 text-gray-700">Sign in</h2>
       <form class="flex justify-center flex-col mx-auto">
         <div class="flex p-2 flex-col sm:justify-center md:flex-row">
           <label
@@ -214,7 +214,7 @@
           <div class="w-0 md:w-p-18 inline-block"></div>
           <button
             type="submit"
-            class="btn btn-blue text-white shadow-sm w-20"
+            class="btn btn-blue text-white shadow-sm w-p-50 mx-auto"
             @click="signedIn()"
           >
             Sign in
