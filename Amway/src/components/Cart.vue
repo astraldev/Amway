@@ -1,4 +1,4 @@
-<template v-if="this.$parent.signedIn">
+<template v-if="this.$parent.signedIn()">
   <div class="min-h-screen-80" v-if="itemInCart()">
     <modal :value="doneShopping" @close="modalClosed()">
       <div slot="title" class="text-gray-700 flex flex-row items-center space-y-2">

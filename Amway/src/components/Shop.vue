@@ -130,7 +130,7 @@ export default {
       products: pd,
       snackbarcontent: "",
       snackclasses: "snackbar",
-      signedIn: this.$parent.signedIn,
+      signedIn: this.$parent.signedIn(),
       ifDiscount() {
         if (this.signedIn && product.discount != 0) return "discount";
         return "";
@@ -144,13 +144,13 @@ export default {
       this.$parent.Page = "SignIn";
     },
     loggedIn() {
-      return this.$parent.signedIn;
+      return this.$parent.signedIn();
     },
     goToProductPage(product){
       this.$parent.toProduct(product)
     },
     addToCart(item) {
-      if (this.$parent.signedIn) this.$parent.cart.push(item);
+      if (this.$parent.signedIn()) this.$parent.cart.push(item);
       item.count = 1;
     },
     getRating() {
@@ -162,7 +162,7 @@ export default {
       this.$parent.Page = page;
     },
     showModal() {
-      if (!this.$parent.signedIn) this.$parent.openModal = true;
+      if (!this.$parent.signedIn()) this.$parent.openModal = true;
     },
   },
 };

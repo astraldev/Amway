@@ -289,7 +289,6 @@ export default {
       ) {
         return;
       }
-      this.$parent.signedIn = true;
       this.$parent.userName = this.userName;
       this.$parent.userEmail = this.userEmail;
       this.$parent.userPass = this.userPass;

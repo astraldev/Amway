@@ -443,7 +443,7 @@ export default {
   methods: {
 
     addToCart() {
-      if (this.$parent.signedIn) this.$parent.cart.push(this.data);
+      if (this.$parent.signedIn()) this.$parent.cart.push(this.data);
       this.data.count = 1;
     },
     verified() {

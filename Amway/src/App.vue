@@ -358,11 +358,15 @@ export default {
     return {
       Page: "Shop",
       cart: [],
-      userType: "associate",
-      userName: "AstralDev",
-      userEmail: "a@gmail.com",
-      userPass: "038sha",
-      signedIn: true,
+      userType: "",
+      userName: "",
+      userEmail: "",
+      userPass: "",
+      signedIn(){
+        if(this.userType && this.userEmail && this.userPass && this.userType){
+          return true
+        }
+      },
       notify: false,
       toggleMenu: false,
       togglePage: "",
@@ -406,7 +410,6 @@ export default {
       this.userName = "";
       this.userEmail = "";
       this.userPass = "";
-      this.signedIn = false;
       this.Page = "Shop";
     },
     getMenuClass() {
