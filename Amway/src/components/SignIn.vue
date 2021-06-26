@@ -1,12 +1,11 @@
 <template>
-  <div class="w-full py-5">
+  <div class="w-full py-5 min-h-screen-80 relative">
     <div
       class="
         mx-auto
         px-2
         w-p-95
         md:w-p-70
-        my-auto
         lg:w-p-70
         rounded
         shadow
@@ -254,6 +253,12 @@
                 >Register</a
               ></span
             >
+          <div>
+            <ul class="m-0 flex flex-row">
+              <li class="flex items-center justify-center border border-blue-300"><a href="#"><i></i></a></li>
+              <li class="flex items-center justify-center border border-blue-300"><a href="#"><i></i></a></li>
+            </ul>
+          </div>
           </div>
         </div>
       </form>

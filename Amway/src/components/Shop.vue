@@ -34,23 +34,60 @@
                 <span class="text-base">★</span>
                 {{ getRating(product) }}</span
               >
-              <span>
+              <span class="text-gray-700">
                 {{ product.defaultPrice }}
               </span>
             </div>
           </div>
-          <button
-            class="
-              btn btn-blue
-              slide-effect
-              w-p-95
-              m-rl-2.5
-              rounded-md
-            "
-            v-on:click="addToCart(product);showModal()"
-          >
-            Add to cart
-          </button>
+          <div class="flex">
+            <button
+              class="btn btn-blue slide-effect w-p-80 "
+              v-on:click="
+                addToCart(product);
+                showModal();
+              "
+            >
+              Add to cart
+            </button>
+            <button class="p-1 rounded-full border bg-gray-400 m-auto w-p-20 h-p-20 border-gray-300 hover:bg-gray-500 slide-effect" @click="goToProductPage(product)">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                id="SVGRoot"
+                version="1.1"
+                viewBox="0 0 16 16"
+              >
+                <g id="layer1">
+                  <g id="g905">
+                    <path
+                      style="
+                        fill: none;
+                        fill-opacity: 1;
+                        stroke: #eee;
+                        stroke-width: 2.6092608;
+                        stroke-linecap: round;
+                        stroke-linejoin: miter;
+                        stroke-miterlimit: 4;
+                        stroke-dasharray: none;
+                        stroke-opacity: 1;
+                      "
+                      d="M 8.09375,7.7256244 V 13.35188"
+                      id="path847"
+                    />
+                    <path
+                      id="path849"
+                      d="M 9.625,4 A 1.5,1.5 0 0 1 8.125,5.5 1.5,1.5 0 0 1 6.625,4 1.5,1.5 0 0 1 8.125,2.5 1.5,1.5 0 0 1 9.625,4 Z"
+                      style="
+                        fill: #eee;
+                        fill-opacity: 1;
+                        stroke: none;
+                        stroke-opacity: 1;
+                      "
+                    />
+                  </g>
+                </g>
+              </svg>
+            </button>
+          </div>
         </div>
       </div>
     </div>
@@ -82,7 +119,12 @@ export default {
         "A miniture size desktop printer...",
         "Worth it"
       ),
-      Product("Nike air", 2000.93, "Just Nike air shoe that has no description", "Nike air"),
+      Product(
+        "Nike air",
+        2000.93,
+        "Just Nike air shoe that has no description",
+        "Nike air"
+      ),
     ];
     return {
       products: pd,
@@ -104,6 +146,9 @@ export default {
     loggedIn() {
       return this.$parent.signedIn;
     },
+    goToProductPage(product){
+      this.$parent.toProduct(product)
+    },
     addToCart(item) {
       if (this.$parent.signedIn) this.$parent.cart.push(item);
       item.count = 1;
@@ -113,21 +158,28 @@ export default {
       this.currentRating = rate;
       return rate;
     },
-    goTo(page){
-      this.$parent.Page = page
+    goTo(page) {
+      this.$parent.Page = page;
     },
-    showModal(){
-      if(!this.$parent.signedIn)
-      this.$parent.openModal = true
-    }
+    showModal() {
+      if (!this.$parent.signedIn) this.$parent.openModal = true;
+    },
   },
 };
 
 var product = 0;
-function Product(name, price, description, short_description, discount = 0) {
+function Product(
+  name,
+  price,
+  description,
+  short_description,
+  images = [],
+  discount = 0
+) {
   product++;
   return {
     name: name,
+    images: images,
     price: price,
     description: description,
     shortDes: short_description,

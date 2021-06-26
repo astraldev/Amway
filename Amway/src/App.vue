@@ -184,13 +184,14 @@
           </svg>
         </button>
       </main>
+      <div class="overlay fixed h-screen-90 w-full bottom-0" :class="getMenuClass()"></div>
       <div class="block w-full md:flex md:items-center md:w-p-20 lg:w-p-15">
         <div
-          :class="'border-t-2 border-blue-300 md:border-0 ' + getMenuClass()"
-          class="md:inline-block"
+          :class="'border-t-2 border-blue-300 md:border-0 fixed w-full md:relative ' + getMenuClass()"
+          class="md:inline-block bg-blue-600 right-0"
         >
           <ul
-            class="w-full flex flex-col md:flex-row py-1"
+            class="w-full flex flex-col md:flex-row py-1 p-x-1.5"
             v-click-outside="closeMenu"
           >
             <li
@@ -243,20 +244,20 @@
                 hover:bg-blue-500
                 rounded-md
                 border-0
-                relative
                 flex flex-shrink-0
                 space-x-4
                 order-3
                 md:hidden
+                relative
               "
             >
-              <div class="relative w-full">
+              <div class="relative mx-2.5 w-p-95 ">
                 <input
                   type="text"
                   class="
                     bg-transparent
                     p-0.5
-                    border-b-2 border-blue-500
+                    border-b-2 border-blue-300
                     outline-none
                     placeholder-gray-50 placeholder-medium
                     font-medium
@@ -267,7 +268,7 @@
                   placeholder="Search"
                 />
                 <div
-                  class="absolute inset-y-0 bottom-0 right-0 inline-flex px-2"
+                  class="absolute inset-y-0 bottom-0 right-0 inline-flex px-2 items-center"
                 >
                   <svg
                     class="inline-block"
@@ -338,7 +339,7 @@
     </div>
 
     <keep-alive>
-      <component :is="Page" class="my-2.5 p-1"></component>
+      <component :is="Page" class="py-0.5" :data="data"></component>
     </keep-alive>
   </div>
 </template>
@@ -349,6 +350,7 @@ import Cart from "./components/Cart.vue";
 import SignIn from "./components/SignIn";
 import User from "./components/User";
 import Modal from "./components/modal.vue";
+import Product from './components/Product.vue';
 
 export default {
   name: "App",
@@ -356,15 +358,16 @@ export default {
     return {
       Page: "Shop",
       cart: [],
-      userType: "",
-      userName: "",
-      userEmail: "",
-      userPass: "",
-      signedIn: false,
+      userType: "associate",
+      userName: "AstralDev",
+      userEmail: "a@gmail.com",
+      userPass: "038sha",
+      signedIn: true,
       notify: false,
       toggleMenu: false,
       togglePage: "",
       openModal:false,
+      data: "",
     };
   },
   methods: {
@@ -394,7 +397,6 @@ export default {
         if (this.signedIn) {
           this.Page = other;
         }
-        console.log(other);
       }
 
       this.notify = false;
@@ -414,10 +416,13 @@ export default {
     },
     closeMenu() {
       if (this.toggleMenu) this.toggleMenu = false;
-      console.log(this.toggleMenu);
     },
     clearCart(){
       this.cart = []
+    },
+    toProduct(prod){
+      this.changePage("Product")
+      this.data = prod
     },
   },
   components: {
@@ -425,7 +430,8 @@ export default {
     Cart,
     SignIn,
     User,
-    Modal
+    Modal,
+    Product,
   },
 };
 </script>

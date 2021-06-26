@@ -1,5 +1,5 @@
 <template v-if="this.$parent.signedIn">
-  <div class="" v-if="itemInCart()">
+  <div class="min-h-screen-80" v-if="itemInCart()">
     <modal :value="doneShopping" @close="modalClosed()">
       <div slot="title" class="text-gray-700 flex flex-row items-center space-y-2">
         <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path></svg>
@@ -13,12 +13,12 @@
       <div class="">Price</div>
       <div class="">Quantity</div>
     </div>
-    <div v-for="product in products" :key="product.name" class="">
-      <div class="">
-        <div class="">{{ product.name }}</div>
-        <div class="">{{ product.shortDes }}</div>
+    <div v-for="product in products" :key="product.name" class="my-1 border-b border-gray-300 p-1 flex flex-row md:flex-col overflow-hidden hover:shadow hover:border-1 hover:scale-95" tabindex="0" @click="goToProductPage(product)">
+      <div class="w-p-50">
+        <div class=" capitalize font-x-medium text-xl text-gray-800">{{ product.name }}</div>
+        <div class=" font-medium antialiased leading-normal overflow-ellipsis text-gray-700 h-12 overflow-hidden relative" >{{ product.description }} <span class="md:hidden w-full h-full absolute flex top-0 right-0 flex-col-reverse items-bottom"> <span class="flex flex-row-reverse"><span class="w-p-15 bg-white opacity-95">...</span></span></span></div>
       </div>
-      <div class="">
+      <div class="w-p-50">
         <span class="">
           <span class="">
             <span
@@ -44,13 +44,13 @@
         </span>
       </div>
     </div>
-    <div class="total">
-      <div class="text-bold">
+    <div class="p-1 mb-1 ">
+      <div class="font-bold text-2xl text-gray-700">
         Total
-        <span class="text-center tt-price">{{ GetTotalPrice() }}</span>
+        <span class="text-center float-right text-2xl text-gray-500">{{ GetTotalPrice() }}</span>
       </div>
     </div>
-    <div class="check-out">
+    <div class="p-1 flex">
       <button
         class="btn btn-blue h-full mx-auto w-p-60 slide-effect"
         @click="checkOut()"
@@ -58,8 +58,11 @@
         Check Out
       </button>
     </div>
+    <div class="p-1 flex items-center">
+      <a href="#" @click="goTo('Shop')" class="mx-auto font-x-medium text-blue-400 hover:text-blue-500">Continue shopping?</a>
+    </div>
   </div>
-  <div class="w-full h-screen-70 grid place-items-center" v-else>
+  <div class="w-full min-h-screen-80 grid place-items-center" v-else>
     <div class=" justify-center flex-col w-p-90 h-p-40">
       <svg
         version="1.1"
@@ -104,11 +107,15 @@ export default {
   watch: {
     cart(val) {
       this.products = this.GetProducts(val);
+      this.$parent.cart = this.products
     },
   },
   methods: {
     goTo(page){
       this.$parent.changePage(page)
+    },
+    goToProductPage(product){
+      this.$parent.toProduct(product)
     },
     updateCount(prod) {
       if (prod.count > 0) {
@@ -170,7 +177,7 @@ export default {
     modalClosed(){
       this.doneShopping = false
       this.$parent.clearCart()
-    }
+    },
   },
 };
 

@@ -1,16 +1,36 @@
 <template>
-  <div id="number" class="wrapper" :style="size_">
-    <div v-if="withTotal">
-      <input 
+  <div
+    id="number"
+    class="
+      mx-auto
+      inline-block
+      p-0
+      overflow-hidden
+      rounded-sm
+      border border-gray-400
+    "
+    :style="size_"
+  >
+    <div v-if="withTotal" class="h-p-50">
+      <input
         type="number"
-        class="number flat w-full total disabled"
+        class="
+          p-1.5
+          border-0
+          w-full
+          border-b
+          border-gray-800
+          bg-gray-100
+          text-gray-900
+          appearance-none
+        "
         v-model.number="per1"
         disabled
-      >
+      />
     </div>
-    <div class="container">
+    <div class="inline-flex w-full " :class="resize()">
       <button
-        class="button dec w-25p slide-effect"
+        class="border-1 p-0.5 dec w-p-25 slide-effect hover:darken font-x-medium"
         @click="decrement"
         :disabled="decDisabled"
         :style="dec_Style()"
@@ -19,19 +39,21 @@
       </button>
       <input
         type="number"
-        class="number w-50p flat"
+        class="w-p-50 border-0 appearance-none px-0.5 h-full"
+        :class="textPosition()"
         :style="inp_Style()"
         :disabled="inputDisabled"
         :min="min"
         :max="max"
         v-model.number="currentValue"
+        @keydown.enter="valueChanged()"
         @blur="currentValue = value"
         @keydown.up.prevent="currentValue = value"
         @keydown.esc="currentValue = value"
         @keydown.down.prevent="currentValue = value"
       />
       <button
-        class="button inc w-25p slide-effect"
+        class="border-1 p-0.5 dec w-p-25 slide-effec hover:darken font-x-medium"
         @click="increment"
         :disabled="incDisabled"
         :style="inc_Style()"
@@ -48,10 +70,12 @@ export default {
     value: { type: Number, default: 1 },
     min: { type: Number, default: 0 },
     size: { default: "60" },
-    type: { default: "around", type: String},
-    withTotal: {default: false},
-    per1 : {default: 1},
-    textposition: {default: "left"}
+    type: { default: "around", type: String },
+    withTotal: { default: false },
+    per1: { default: 1 },
+    textposition: { default: "left" },
+    btncolor: {default: "white"},
+    textcolor:{default: "black"},
   },
   data() {
     return {
@@ -61,37 +85,43 @@ export default {
       inputDisabled: false,
       size_: this.getSize(),
       oldval: this.per1,
-      textPosition: (()=> {
+      resize(){
+        if(this.withTotal){
+          return "h-p-50"
+        }
+        return "h-full"
+      },
+      textPosition(){
         this.textposition = this.textposition.toLowerCase()
-        if(this.textposition == "left") return "text-align: left;"
-        if(this.textposition == "center") return "text-align: center;"
-        if(this.textposition == "right") return "text-align: right;"
-      })(),
-      inc_Style(){
-        if(this.type == "left"){
-          return "order: 1; border-left: 1px solid #646464"
-        }else if(this.type == "right"){
-          return "order: 2; border-left: 1px solid #646464"
-        }else{
-          return "order: 2;"
+        if (this.textposition == "left") return "text-left";
+        if (this.textposition == "center") return "text-center";
+        if (this.textposition == "right") return "text-right";
+      },
+      inc_Style() {
+        if (this.type == "left") {
+          return `order: 1; border-left: 1px solid #555; background-color: ${this.btncolor};color: ${this.textcolor}`; 
+        } else if (this.type == "right") {
+          return `order: 2; border-left: 1px solid #555; background-color: ${this.btncolor};color: ${this.textcolor}`;
+        } else {
+          return `order: 2; background-color: ${this.btncolor};color: ${this.textcolor}`;
         }
       },
-      dec_Style(){
-        if(this.type == "left"){
-          return "order: 0;"
-        }else if(this.type == "right"){
-          return "order: 1; border-left: 1px solid #646464"
-        }else{
-          return "order: 0;"
+      dec_Style() {
+        if (this.type == "left") {
+          return `order: 0; background-color: ${this.btncolor};color: ${this.textcolor}`;
+        } else if (this.type == "right") {
+          return `order: 1; border-left: 1px solid #555; background-color: ${this.btncolor};color: ${this.textcolor}`;
+        } else {
+          return `order: 0; background-color: ${this.btncolor};color: ${this.textcolor}`;
         }
       },
-      inp_Style(){
-        if(this.type == "left"){
-          return "order: 2;"
-        }else if(this.type == "right"){
-          return "order: 0;"
-        }else{
-          return "order: 2;"
+      inp_Style() {
+        if (this.type == "left") {
+          return "order: 2;";
+        } else if (this.type == "right") {
+          return "order: 0;";
+        } else {
+          return "order: 2;";
         }
       },
     };
@@ -101,13 +131,13 @@ export default {
       this.currentValue = val;
       this.$emit("input", this.currentValue);
     },
-    type(val){
-      console.log(val)
+    type(val) {
+      console.log(val);
     },
-    per1(val){
-      this.per1 = val
-      console.log(this.oldval)
-    }
+    per1(val) {
+      this.per1 = val;
+      console.log(this.oldval);
+    },
   },
   methods: {
     getSize() {
@@ -140,18 +170,25 @@ export default {
       this.$emit("input", val);
       this.currentValue = val;
     },
+    valueChanged(){
+      this.updateValue(this.currentValue)
+    }
   },
 };
 </script>
 <style scoped>
+.hover\:darken:hover{
+  background: rgba(40,40,40,0.1);
+  transition: background 10ms ease ;
+}
 .flat {
   border-radius: 0;
 }
-.container{
+.container {
   display: flex;
   flex-direction: row;
 }
-.disabled{
+.disabled {
   background-color: #fbfbfb;
   color: #000;
 }
@@ -160,45 +197,18 @@ export default {
   border: 1px solid transparent;
   height: 32px;
 }
-.number {
-  padding: 5px;
-}
 .button {
   background-color: rgb(161, 161, 161);
   color: #000;
 }
-.wrapper {
-  border: 1.5px solid rgb(68, 68, 68);
-  margin: auto;
-  display: inline-block;
-  padding: 0;
-  width: 60%;
-  border-radius: 4px;
-  overflow: hidden;
-}
-.total{
+.total {
   border-bottom: 1px solid #444444;
 }
 .wrapper:hover {
   box-shadow: 0 0 0 0.15rem rgba(224, 224, 224, 0.804);
 }
 
-.w-40p {
-  width: 40%;
-}
-.w-60p {
-  width: 60%;
-}
-.w-20p {
-  width: 20%;
-}
-.w-25p {
-  width: 25%;
-}
-.w-50p {
-  width: 50%;
-}
-.w-90p{
-  width: 90%;
+color-picker{
+  color: rgb(49, 139, 243);
 }
 </style>
