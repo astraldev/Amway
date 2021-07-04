@@ -4,10 +4,12 @@
     class="
       mx-auto
       inline-block
+      relative
       p-0
       overflow-hidden
       rounded-sm
       border border-gray-400
+      h-full
     "
     :style="size_"
   >
@@ -18,6 +20,7 @@
           p-1.5
           border-0
           w-full
+          h-full
           border-b
           border-gray-800
           bg-gray-100

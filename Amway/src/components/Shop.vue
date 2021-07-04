@@ -6,9 +6,13 @@
         class="border border-blue-500 shadow-md rounded-md mx-auto h-full"
         :key="product.id + '_' + index"
       >
-        <div class="border-b-2 border-gray-300 h-43">
-          <div class="sm:flex-shrink-0">
-            <img src="" class="" border="0" />
+        <div class="border-b-2 border-gray-300 h-43 relative">
+          <div class="sm:flex-shrink-0 h-full w-full">
+            <img src="" class="w-full h-full" border="0" />
+            
+            <button class="h-7 w-7 absolute border-0 right-1 top-1 rounded-full p-0.5 bg-gray-50 hover:bg-gray-200 text-black " @click="goToProductPage(product)">
+              <svg class="h-full w-full" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+            </button>
           </div>
         </div>
         <div class="h-57 px-1 relative">
@@ -29,7 +33,7 @@
               }}</span>
               {{ product.description }}
             </div>
-            <div class="text-rating font-semibold p-0.5 w-40 m-rl-2 price-tag">
+            <div class="text-rating font-semibold p-0.5 w-40 price-tag">
               <span class="bg-rating text-white px-0.5 rounded-sm">
                 <span class="text-base">★</span>
                 {{ getRating(product) }}</span
@@ -39,9 +43,8 @@
               </span>
             </div>
           </div>
-          <div class="flex">
             <button
-              class="btn btn-blue slide-effect w-p-80 "
+              class="btn btn-blue slide-effect w-full"
               v-on:click="
                 addToCart(product);
                 showModal();
@@ -49,45 +52,6 @@
             >
               Add to cart
             </button>
-            <button class="p-1 rounded-full border bg-gray-400 m-auto w-p-20 h-p-20 border-gray-300 hover:bg-gray-500 slide-effect" @click="goToProductPage(product)">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                id="SVGRoot"
-                version="1.1"
-                viewBox="0 0 16 16"
-              >
-                <g id="layer1">
-                  <g id="g905">
-                    <path
-                      style="
-                        fill: none;
-                        fill-opacity: 1;
-                        stroke: #eee;
-                        stroke-width: 2.6092608;
-                        stroke-linecap: round;
-                        stroke-linejoin: miter;
-                        stroke-miterlimit: 4;
-                        stroke-dasharray: none;
-                        stroke-opacity: 1;
-                      "
-                      d="M 8.09375,7.7256244 V 13.35188"
-                      id="path847"
-                    />
-                    <path
-                      id="path849"
-                      d="M 9.625,4 A 1.5,1.5 0 0 1 8.125,5.5 1.5,1.5 0 0 1 6.625,4 1.5,1.5 0 0 1 8.125,2.5 1.5,1.5 0 0 1 9.625,4 Z"
-                      style="
-                        fill: #eee;
-                        fill-opacity: 1;
-                        stroke: none;
-                        stroke-opacity: 1;
-                      "
-                    />
-                  </g>
-                </g>
-              </svg>
-            </button>
-          </div>
         </div>
       </div>
     </div>
@@ -125,6 +89,8 @@ export default {
         "Just Nike air shoe that has no description",
         "Nike air"
       ),
+      Product("Orini Pen", 40.53, "Orini pen. Best high quality writing pen made to write on all surfaces", 
+      "High quality orini pen", 4)
     ];
     return {
       products: pd,
@@ -173,8 +139,8 @@ function Product(
   price,
   description,
   short_description,
-  images = [],
-  discount = 0
+  discount = 0,
+  images = []
 ) {
   product++;
   return {

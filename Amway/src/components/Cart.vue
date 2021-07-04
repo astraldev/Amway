@@ -1,22 +1,116 @@
 <template v-if="this.$parent.signedIn()">
-  <div class="min-h-screen-80" v-if="itemInCart()">
+  <div class="min-h-screen-80 " v-if="itemInCart()">
     <modal :value="doneShopping" @close="modalClosed()">
-      <div slot="title" class="text-gray-700 flex flex-row items-center space-y-2">
-        <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path></svg>
-        Purchase Successful</div>
-      <div slot="content" class="text-gray-600">Thanks for shopping with Amway :)</div>
-      <div slot="footer" class="w-full flex flex-row-reverse"><button class="mr-2 w-p-40 btn btn-blue" @click="modalClosed()">Close</button></div>
+      <div
+        slot="title"
+        class="text-gray-700 flex flex-row items-center space-y-2"
+      >
+        <svg
+          class="w-12 h-12"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"
+          ></path>
+        </svg>
+        Purchase Successful
+      </div>
+      <div slot="content" class="text-gray-600">
+        Thanks for shopping with Amway :)
+      </div>
+      <div slot="footer" class="w-full flex flex-row-reverse">
+        <button class="mr-2 w-p-40 btn btn-blue" @click="modalClosed()">
+          Close
+        </button>
+      </div>
     </modal>
-    <div class="hidden md:block" style="">
-      <div class="">Name</div>
-      <div class="">Short description</div>
-      <div class="">Price</div>
-      <div class="">Quantity</div>
-    </div>
-    <div v-for="product in products" :key="product.name" class="my-1 border-b border-gray-300 p-1 flex flex-row md:flex-col overflow-hidden hover:shadow hover:border-1 hover:scale-95" tabindex="0" @click="goToProductPage(product)">
+    <div class="grid grid-cols-1 md:w-p-70 md:mx-auto md:min-h-screen-45 border-2 shadow rounded-md">
+    <div
+      v-for="product in products"
+      :key="product.name"
+      class="
+        my-2
+        border-b border-gray-300
+        p-1
+        h-24
+        flex flex-row
+        overflow-hidden
+      "
+    >
       <div class="w-p-50">
-        <div class=" capitalize font-x-medium text-xl text-gray-800">{{ product.name }}</div>
-        <div class=" font-medium antialiased leading-normal overflow-ellipsis text-gray-700 h-12 overflow-hidden relative" >{{ product.description }} <span class="md:hidden w-full h-full absolute flex top-0 right-0 flex-col-reverse items-bottom"> <span class="flex flex-row-reverse"><span class="w-p-15 bg-white opacity-95">...</span></span></span></div>
+        
+        <div class="capitalize font-x-medium text-xl h-8 flex items-center relative text-gray-800">
+          {{ product.name }}
+          <button
+          class="
+            h-7
+            w-7
+            absolute
+            border-0
+            right-1
+            top-1
+            rounded-full
+            p-0.5
+            
+            bg-gray-50
+            hover:bg-gray-200
+            text-black
+          "
+          @click="goToProductPage(product)"
+        >
+          <svg
+            class="h-full w-full"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+            ></path>
+          </svg>
+        </button>
+        </div>
+        <div
+          class="
+            font-medium
+            antialiased
+            leading-normal
+            overflow-ellipsis
+            text-gray-700
+            h-12
+            overflow-hidden
+            relative
+          "
+        >
+          {{ product.description }}
+          <span
+            class="
+              md:hidden
+              w-full
+              h-full
+              absolute
+              flex
+              top-0
+              right-0
+              flex-col-reverse
+              items-bottom
+            "
+          >
+            <span class="flex flex-row-reverse"
+              ><span class="w-p-15 bg-white opacity-95">...</span></span
+            ></span
+          >
+        </div>
       </div>
       <div class="w-p-50">
         <span class="">
@@ -44,26 +138,34 @@
         </span>
       </div>
     </div>
-    <div class="p-1 mb-1 ">
+    </div>
+    <div class="p-1 mb-1 md:w-p-50 md:mx-auto">
       <div class="font-bold text-2xl text-gray-700">
         Total
-        <span class="text-center float-right text-2xl text-gray-500">{{ GetTotalPrice() }}</span>
+        <span class="text-center float-right text-2xl text-gray-500">{{
+          GetTotalPrice()
+        }}</span>
       </div>
     </div>
-    <div class="p-1 flex">
+    <div class="p-1 flex md:w-p-50 mx-auto">
       <button
-        class="btn btn-blue h-full mx-auto w-p-60 slide-effect"
+        class="btn btn-blue h-full w-full slide-effect"
         @click="checkOut()"
       >
         Check Out
       </button>
     </div>
     <div class="p-1 flex items-center">
-      <a href="#" @click="goTo('Shop')" class="mx-auto font-x-medium text-blue-400 hover:text-blue-500">Continue shopping?</a>
+      <a
+        href="#"
+        @click="goTo('Shop')"
+        class="mx-auto font-x-medium text-blue-400 hover:text-blue-500"
+        >Continue shopping?</a
+      >
     </div>
   </div>
   <div class="w-full min-h-screen-80 grid place-items-center" v-else>
-    <div class=" justify-center flex-col w-p-90 h-p-40">
+    <div class="justify-center flex-col w-p-90 h-p-40">
       <svg
         version="1.1"
         id="Layer_1"
@@ -76,8 +178,15 @@
           d="M3.9,7.9C1.8,7.9,0,6.1,0,3.9C0,1.8,1.8,0,3.9,0h10.2c0.1,0,0.3,0,0.4,0c3.6,0.1,6.8,0.8,9.5,2.5c3,1.9,5.2,4.8,6.4,9.1 c0,0.1,0,0.2,0.1,0.3l1,4H119c2.2,0,3.9,1.8,3.9,3.9c0,0.4-0.1,0.8-0.2,1.2l-10.2,41.1c-0.4,1.8-2,3-3.8,3v0H44.7 c1.4,5.2,2.8,8,4.7,9.3c2.3,1.5,6.3,1.6,13,1.5h0.1v0h45.2c2.2,0,3.9,1.8,3.9,3.9c0,2.2-1.8,3.9-3.9,3.9H62.5v0 c-8.3,0.1-13.4-0.1-17.5-2.8c-4.2-2.8-6.4-7.6-8.6-16.3l0,0L23,13.9c0-0.1,0-0.1-0.1-0.2c-0.6-2.2-1.6-3.7-3-4.5 c-1.4-0.9-3.3-1.3-5.5-1.3c-0.1,0-0.2,0-0.3,0H3.9L3.9,7.9z M96,88.3c5.3,0,9.6,4.3,9.6,9.6c0,5.3-4.3,9.6-9.6,9.6 c-5.3,0-9.6-4.3-9.6-9.6C86.4,92.6,90.7,88.3,96,88.3L96,88.3z M53.9,88.3c5.3,0,9.6,4.3,9.6,9.6c0,5.3-4.3,9.6-9.6,9.6 c-5.3,0-9.6-4.3-9.6-9.6C44.3,92.6,48.6,88.3,53.9,88.3L53.9,88.3z M33.7,23.7l8.9,33.5h63.1l8.3-33.5H33.7L33.7,23.7z"
         />
       </svg>
-      <span class="antialiased text-2xl font-semibold text-gray-600">No item in Cart</span>
-      <a href="#" @click.prevent="goTo('Shop')" class="text-blue-400 hover:text-blue-500">Continue shopping</a>
+      <span class="antialiased text-2xl font-semibold text-gray-600"
+        >No item in Cart</span
+      >
+      <a
+        href="#"
+        @click.prevent="goTo('Shop')"
+        class="text-blue-400 hover:text-blue-500"
+        >Continue shopping</a
+      >
     </div>
   </div>
 </template>
@@ -107,15 +216,15 @@ export default {
   watch: {
     cart(val) {
       this.products = this.GetProducts(val);
-      this.$parent.cart = this.products
+      this.$parent.cart = this.products;
     },
   },
   methods: {
-    goTo(page){
-      this.$parent.changePage(page)
+    goTo(page) {
+      this.$parent.changePage(page);
     },
-    goToProductPage(product){
-      this.$parent.toProduct(product)
+    goToProductPage(product) {
+      this.$parent.toProduct(product);
     },
     updateCount(prod) {
       if (prod.count > 0) {
@@ -132,8 +241,8 @@ export default {
       }
       this.Discount(prod);
       var price = new Number(prod.price.toString());
-      price = price.toFixed(2)
-      prod.price = price
+      price = price.toFixed(2);
+      prod.price = price;
     },
     GetProducts(cart) {
       if (!cart) return;
@@ -174,9 +283,9 @@ export default {
     checkOut() {
       this.doneShopping = true;
     },
-    modalClosed(){
-      this.doneShopping = false
-      this.$parent.clearCart()
+    modalClosed() {
+      this.doneShopping = false;
+      this.$parent.clearCart();
     },
   },
 };

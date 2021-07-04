@@ -1,12 +1,12 @@
 <template>
-  <div class="w-full py-5 min-h-screen-80 relative">
+  <div class="w-full py-5 my-5 relative block">
     <div
       class="
         mx-auto
         px-2
         w-p-95
         md:w-p-70
-        lg:w-p-70
+        lg:w-p-50
         rounded
         shadow
         border-2
@@ -235,11 +235,11 @@
             </div>
           </div>
         </div>
-        <div class="p-2">
+        <div class="p-2 flex flex-row">
           <div class="w-0 md:w-p-18 inline-block"></div>
           <button
             type="submit"
-            class="btn btn-blue text-white shadow-sm w-full md:w-p-95 mx-auto"
+            class="btn btn-blue text-white shadow-sm w-full md:w-p-85 mx-auto"
             @click="signedIn()"
           >
             Sign in
@@ -253,7 +253,7 @@
                 >Register</a
               ></span
             >
-          <div>
+          <div class="p-2 ">
             <ul class="m-0 flex flex-row">
               <li class="flex items-center justify-center border border-blue-300"><a href="#"><i></i></a></li>
               <li class="flex items-center justify-center border border-blue-300"><a href="#"><i></i></a></li>

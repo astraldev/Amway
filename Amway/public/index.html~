@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang>
+<head>
+  <meta charset="utf-8" />
+  <meta content="IE=edge"
+        http-equiv="X-UA-Compatible" />
+  <meta content="width=device-width,initial-scale=1.0"
+        name="viewport" />
+  <link rel="stylesheet" />
+  <link href="<%= BASE_URL %>favicon.ico"
+        rel="icon" />
+  <link href="tailwind.css" rel="stylesheet" />
+  <title>
+    <%= htmlWebpackPlugin.options.title %>
+  </title>
+  <style>
+    .price-tag{
+      font-family: Arial, Helvetica, sans-serif;
+    }
+    input.placeholder-medium::placeholder{
+      font-weight: 550;
+    }
+  </style>
+</head>
+
+<body>
+  
+  <noscript>
+    <strong>
+      We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please
+      enable it to continue.
+    </strong>
+  </noscript>
+
+  <div id="app"></div>
+  <!-- built files will be auto injected -->
+
+  <footer class="bg-blue-600 text-white p-1 justify-center flex-col flex items-center relative bottom-0 ">
+    <ul class="block">
+      <li class="inline-block space-x-2 px-1 font-semibold font-arial text-base"><a href="#">Contact us</a></li>
+      <li class="inline-block space-x-2 px-1 font-semibold font-arial text-base"><a href="#">About us</a></li>
+      <li class="inline-block space-x-2 px-1 font-semibold font-arial text-base"><a href="#">FAQ</a></li>
+    </ul>
+    <div class="text-gray-300 text-sm font-bold">
+      Astraldev.co &copy; 2021 
+    <div>
+  </footer>
+  <script>
+    function checkSize(){
+    let app = document.querySelector("#app");
+    let out = document.querySelector("#out")
+    if(app.clientHeight < 600){
+      out.textContent = screenX      
+    }
+    }
+
+  </script>
+</body>
+</html>

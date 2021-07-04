@@ -39,10 +39,31 @@
         transform: rotate(360deg);
       }
     }
+    .dissabled{
+      background: rgba(40,40,40,0.4);
+    }
+    .last-child\:border-r:last-child{
+      border-right-width: 1px;
+    }
+    .last-child\:border-r-2:last-child{
+      border-right-width: 2px;
+    }
+    .last-child\:border-l:last-child{
+      border-left-width: 1px;
+    }
+    .last-child\:border-l-2:last-child{
+      border-left-width: 2px;
+    }
+    .nth-child-even\:border-r-0:nth-child(even){
+      border-right-width: 0;
+    }
+    .nth-child-odd\:border-l-0:nth-child(odd){
+      border-left-width: 0;
+    }
   </style>
 </head>
 
-<body>
+<body class="">
 
   <noscript>
     <strong>
@@ -64,15 +85,6 @@
       Astraldev.co &copy; 2021
       <div>
   </footer>
-  <script>
-    function checkSize() {
-      let app = document.querySelector("#app");
-      let out = document.querySelector("#out")
-      if (app.clientHeight < 600) {
-        out.textContent = screenX
-      }
-    }
-  </script>
 </body>
 
 </html>

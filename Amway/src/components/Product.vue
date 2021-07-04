@@ -1,6 +1,6 @@
 <template>
-  <div class="min-h-screen-90">
-    <div class="min-h-screen-85">
+  <div class="min-h-screen-90 md:w-p-70 lg:w-p-40 border-2 shdow-md rounded-md mx-auto">
+    <div class="min-h-screen-85 ">
       <div
         class="
           h-screen-40
@@ -10,6 +10,9 @@
           overflow-hidden
           rounded-t-md
           flex
+          w-p-95
+          md:w-full
+          mx-auto
         "
       >
         <img
@@ -101,8 +104,8 @@
         >
           {{ data.name }}
         </div>
-        <div class="text-gray-600 w-full">
-          <div class="text-center">{{ data.description }}</div>
+        <div class="text-gray-600 md:w-p-90 w-full mx-auto">
+          <div class="text-center w-p-90 mx-auto">{{ data.description }}</div>
           <div class="font-x-medium text-lg text-center my-2">
             Price : {{ data.price }}
           </div>
@@ -163,21 +166,25 @@
             </div>
           </div>
         </div>
-        <div class="flex flex-col md:flex-row justify-center items-center">
-          <button class="btn btn-blue w-p-90 slide-effect" v-if="!itemInCart()" @click="addToCart()">
+        <div class="grid w-p-90 mx-auto h-20 grid-cols-1 grid-rows-2 justify-center  items-center">
+          <button
+            class="btn btn-blue w-full slide-effect"
+            v-if="!itemInCart()"
+            @click="addToCart()"
+          >
             Add to cart
           </button>
           <number
             v-else
             v-model="data.count"
             :value="data.count"
-            :size="90"
+            :size="100"
             :textposition="'center'"
             :btncolor="'rgb(96, 165, 250)'"
-            class="h-10 rounded shadow-md border-2"
+            class="rounded shadow-md border-2 w-full"
             :textcolor="'white'"
           ></number>
-          <button class="btn btn-gray w-p-90 slide-effect">
+          <button class="btn btn-gray w-full slide-effect">
             Call to order
           </button>
         </div>
@@ -185,17 +192,9 @@
     </div>
     <!--Comment Section-->
     <div
-      class="
-        border-t border-gray-200
-        my-2
-        py-1
-        w-p-95
-        mx-auto
-        flex flex-col flex-shrink-0
-        items-center
-      "
+      class="my-2 py-1 w-p-95 mx-auto flex flex-col flex-shrink-0 items-center"
     >
-      <div class="flex flex-col w-p-95">
+      <div class="flex flex-col w-p-95" v-if="this.$parent.signedIn()">
         <span class="text-base w-full font-x-medium text-gray-600"
           >Leave a review
         </span>
@@ -374,11 +373,19 @@
                   </g>
                 </svg>
               </span>
-              <span class="text-center">{{ verifyText() }}</span>
+              <span class="mr-1 text-center">{{ verifyText() }}</span>
             </button>
             <button class="btn btn-blue">Comment</button>
           </div>
         </div>
+      </div>
+      <div v-else class="font-x-medium text-gray-600 flex mx-auto text-base">
+        <span
+          ><a href="#" class="text-blue-400" @click.prevent="goTo('SignIn')"
+            >Sign in</a
+          >
+          to view reviews</span
+        >
       </div>
     </div>
   </div>
@@ -441,19 +448,29 @@ export default {
     };
   },
   methods: {
+    goTo(name) {
+      this.$parent.changePage(name);
+    },
 
+    showModal() {
+      this.$parent.openModal = true;
+    },
     addToCart() {
-      if (this.$parent.signedIn()) this.$parent.cart.push(this.data);
-      this.data.count = 1;
+      if (this.$parent.signedIn()) {
+        this.$parent.cart.push(this.data);
+        this.data.count = 1;
+      }else
+        this.showModal();
     },
     verified() {
       this.beginVerify = false;
-      this.purchaseVerified = true;
+      let choice = [true, false, true, false, true, false];
+      this.purchaseVerified = choice[Math.floor(Math.random() * 10)];
     },
     verifyPurchase() {
       if (this.purchaseVerified || this.tryVerify) return;
       this.beginVerify = true;
-      setTimeout(this.verified, 1000);
+      setTimeout(this.verified, 5000);
     },
     hideBtns() {
       if (this.numOfImages < 1) return " hidden";
