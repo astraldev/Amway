@@ -30,7 +30,7 @@
         </button>
       </div>
     </modal>
-    <div class="grid grid-cols-1 md:w-p-70 md:mx-auto md:min-h-screen-45 border-2 shadow rounded-md">
+    <div class="grid grid-cols-1 md:w-p-70 lg:w-p-50 md:px-1 md:mx-auto md:min-h-screen-45 border-0 md:border-2 shadow-none md:shadow rounded-none md:rounded-md">
     <div
       v-for="product in products"
       :key="product.name"

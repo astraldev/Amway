@@ -1,7 +1,7 @@
 <template>
   <div
     v-if="value"
-    class="fixed top-0 w-full z-30 h-full blur-md grid place-items-center"
+    class="fixed top-0 w-full z-30 h-full blur-md flex items-center justify-center"
     style="background: rgba(10, 10, 10, 0.3)"
     tabindex="0"
     @click="close()"

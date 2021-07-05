@@ -104,7 +104,7 @@
               <span class="inline-block whitespace-nowrap" v-if="!signedIn()">
                 Sign in
               </span>
-              <span v-else>{{ userName }}</span>
+              <span class="whitespace-nowrap" v-else>{{ userName.split(" ")[0] }}</span>
 
               <span class="inline-block p-0.5">
                 <svg

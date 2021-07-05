@@ -9,10 +9,10 @@ module.exports = {
   theme: {
     extend: {
       gridTemplateColumns: {
-        "categories" : "repeat(auto-fit, minmax(149px, 190px))"
+        "categories" : "repeat(auto-fit, minmax(9.2em, 12.5em))"
       },
       gridAutoRows: {
-        "categories": "270px"
+        "categories": "17.5em"
       },
       maxHeight:{
         "screen-5":"5vh",
@@ -77,6 +77,7 @@ module.exports = {
         "p-50":"50%",
         "p-60":"60%",
         "p-70":"70%",
+        "p-75":"75%",
         "p-80":"80%",
         "p-90":"90%",
         "p-95":"95%",
@@ -90,6 +91,15 @@ module.exports = {
         "screen-80": "80vh",
         "screen-85": "85vh",
         "screen-90": "90vh",
+        "screen-95": "95vh",
+        "px-10":"10px",
+        "px-20":"20px",
+        "px-30":"30px",
+        "px-40":"40px",
+        "px-50":"50px",
+        "px-60":"60px",
+        "px-70":"70px",
+        "px-80":"80px"
       },
       fontSize: {
         "rating": "14.4px"

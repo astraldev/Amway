@@ -9,14 +9,13 @@
         <div class="border-b-2 border-gray-300 h-43 relative">
           <div class="sm:flex-shrink-0 h-full w-full">
             <img src="" class="w-full h-full" border="0" />
-            
             <button class="h-7 w-7 absolute border-0 right-1 top-1 rounded-full p-0.5 bg-gray-50 hover:bg-gray-200 text-black " @click="goToProductPage(product)">
               <svg class="h-full w-full" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
             </button>
           </div>
         </div>
         <div class="h-57 px-1 relative">
-          <div class="">
+          <div class=" h-p-70 mb-1">
             <div
               class="
                 text-sm
@@ -43,8 +42,9 @@
               </span>
             </div>
           </div>
+
             <button
-              class="btn btn-blue slide-effect w-full"
+              class="btn btn-blue slide-effect w-full "
               v-on:click="
                 addToCart(product);
                 showModal();
